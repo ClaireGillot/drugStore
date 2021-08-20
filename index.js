@@ -9,11 +9,11 @@ const app = express();
 app.use(formidableMiddleware());
 app.use(cors());
 
-mongoose.connect(process.env.MONGODB_URI),
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  };
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+});
 
 const Drug = mongoose.model("Drug", {
   name: String,
